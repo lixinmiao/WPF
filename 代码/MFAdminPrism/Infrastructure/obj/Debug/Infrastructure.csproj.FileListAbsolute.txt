@@ -1,0 +1,17 @@
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\BureauBlack.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\BureauBlue.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\ExpressionDark.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\ExpressionLight.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\ShinyBlue.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\ShinyRed.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Resources\Themes\WhistlerBlue.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Infrastructure_MarkupCompile.cache
+G:\Project\MFAdminPrism\Infrastructure\bin\Debug\Infrastructure.dll
+G:\Project\MFAdminPrism\Infrastructure\bin\Debug\Infrastructure.pdb
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Infrastructure.g.resources
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Infrastructure.dll
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Infrastructure.pdb
+G:\Project\MFAdminPrism\Infrastructure\bin\Debug\Microsoft.Practices.ServiceLocation.dll
+G:\Project\MFAdminPrism\Infrastructure\bin\Debug\Microsoft.Practices.Prism.dll
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Controls\PopWindow\PopUpWindow.baml
+G:\Project\MFAdminPrism\Infrastructure\obj\Debug\Controls\PopWindow\PopUpWindow.g.cs

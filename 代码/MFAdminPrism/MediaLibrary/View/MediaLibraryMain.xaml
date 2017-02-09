@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="MediaLibrary.View.MediaLibraryMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MediaLibrary.View"
+             xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="768" Background="White">
+    <UserControl.Resources>
+        <infrastructure:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></infrastructure:BoolToVisibilityConverter>
+        <infrastructure:BoolReverseToVisibilityConverter x:Key="BoolReverseToVisibilityConverter"></infrastructure:BoolReverseToVisibilityConverter>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <local:ToolMenuBar/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <local:MediaLibraryThumb Visibility="{Binding IsThumb,Converter={StaticResource BoolToVisibilityConverter}}"></local:MediaLibraryThumb>
+            <local:MediaLibraryList Visibility="{Binding IsThumb,Converter={StaticResource BoolReverseToVisibilityConverter}}"></local:MediaLibraryList>
+
+        </Grid>
+
+    </Grid>
+</UserControl>
