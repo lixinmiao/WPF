@@ -61,6 +61,19 @@ namespace Infrastructure.Business.MainMenu
             }
         }
 
-       
+        private String itemCommand;
+        public String ItemCommand
+        {
+            get
+            {
+                return itemCommand;
+            }
+
+            set
+            {
+                itemCommand = value; RaisePropertyChanged(() => this.ItemCommand);
+            }
+        }
+
     }
 }

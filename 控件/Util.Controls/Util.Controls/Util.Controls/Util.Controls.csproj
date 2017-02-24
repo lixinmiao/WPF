@@ -182,6 +182,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <Resource Include="Resources\iconfont.ttf" />
+    <Resource Include="Resources\iconfont1.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.png" />

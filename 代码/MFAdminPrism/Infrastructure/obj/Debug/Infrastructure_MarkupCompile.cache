@@ -4,7 +4,7 @@
 library
 C#
 .cs
-G:\Project\MFAdminPrism\Infrastructure\obj\Debug\
+G:\MyGit\WPF\代码\MFAdminPrism\Infrastructure\obj\Debug\
 Infrastructure
 none
 false
@@ -12,8 +12,8 @@ DEBUG;TRACE
 
 8238032630
 1-916077405
-18272635887
-181976233175
+21-930611461
+18-830014160
 Controls\PopWindow\PopUpWindow.xaml;Resources\Themes\BureauBlack.xaml;Resources\Themes\BureauBlue.xaml;Resources\Themes\ExpressionDark.xaml;Resources\Themes\ExpressionLight.xaml;Resources\Themes\ShinyBlue.xaml;Resources\Themes\ShinyRed.xaml;Resources\Themes\WhistlerBlue.xaml;
 
 False

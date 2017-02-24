@@ -24,6 +24,6 @@ namespace MediaLibrary.View
         {
             InitializeComponent();
         }
-
+       
     }
 }

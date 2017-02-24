@@ -5,24 +5,71 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MediaLibrary.View"
              xmlns:infrastructure="clr-namespace:Infrastructure;assembly=Infrastructure"
+              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="768" Background="White">
     <UserControl.Resources>
-        <infrastructure:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></infrastructure:BoolToVisibilityConverter>
-        <infrastructure:BoolReverseToVisibilityConverter x:Key="BoolReverseToVisibilityConverter"></infrastructure:BoolReverseToVisibilityConverter>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Themes/Separator.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Themes/Menu.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}">
+                <Setter Property="Background" Value="White">
+                </Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
+               
+            </Style>
+            <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}">
+                <Setter Property="Background" Value="White"></Setter>
+                <Setter Property="Foreground" Value="Black"></Setter>
+            </Style>
+            <infrastructure:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"></infrastructure:BoolToVisibilityConverter>
+            <infrastructure:BoolReverseToVisibilityConverter x:Key="BoolReverseToVisibilityConverter"></infrastructure:BoolReverseToVisibilityConverter>
+            <infrastructure:BoolReverseToEnabledConverter x:Key="BoolReverseToEnabledConverter"></infrastructure:BoolReverseToEnabledConverter>
+        </ResourceDictionary>
+       
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <local:ToolMenuBar/>
         </Grid>
+        <Grid Grid.Row="2">
+            <TextBox Text="{Binding  FileItemSelected.Index}"/>
+        </Grid>
         <Grid Grid.Row="1">
             <local:MediaLibraryThumb Visibility="{Binding IsThumb,Converter={StaticResource BoolToVisibilityConverter}}"></local:MediaLibraryThumb>
             <local:MediaLibraryList Visibility="{Binding IsThumb,Converter={StaticResource BoolReverseToVisibilityConverter}}"></local:MediaLibraryList>
-
+            <Grid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="打开" Background="#404040" Icon="&#xe722;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}" Command="{Binding ViewDetailCommand}" CommandParameter="{Binding FileItemSelected.Index}">
+                    </MenuItem>
+                    <MenuItem Header="下载" Background="#404040" Icon="&#xe614;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
+                    </MenuItem>
+                    <MenuItem Header="移动到" Background="#404040" Icon="&#xe685;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
+                    </MenuItem>
+                    <MenuItem Header="删除" Background="#404040" Icon="&#xe64d;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
+                    </MenuItem>
+                    <MenuItem Header="上传" Background="#404040" Icon="&#xe666;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolReverseToVisibilityConverter}}">
+                    </MenuItem>
+                    <MenuItem Header="新建文件夹" Background="#404040" Icon="&#xe919;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolReverseToVisibilityConverter}}">
+                    </MenuItem>
+                    <Separator Background="SpringGreen" Style="{StaticResource HorizontalSeparatorStyle}" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolReverseToVisibilityConverter}}"/>
+                    <MenuItem Header="查看"  Icon="&#xe64d;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolReverseToVisibilityConverter}}">
+                        <MenuItem Icon="&#xe610;"  Header="缩略图" Background="#404040" Command="{Binding ViewModeChangedCommand}" CommandParameter="true" IsEnabled="{Binding IsThumb,Converter={StaticResource BoolReverseToEnabledConverter}}"/>
+                        <MenuItem Icon="&#xe63f;" Header="详细信息" Background="#404040" Command="{Binding ViewModeChangedCommand}" CommandParameter="false" IsEnabled="{Binding IsThumb}">
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="刷新" Background="#404040" Icon="&#xe636;" Command="{Binding RefreshCommand}" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolReverseToVisibilityConverter}}">
+                    </MenuItem>
+                </ContextMenu>
+                
+            </Grid.ContextMenu>
+            
         </Grid>
 
     </Grid>

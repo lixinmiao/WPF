@@ -20,36 +20,51 @@ namespace Infrastructure.Controls
     public class CustomerBorder : Border
     {
         //定义路由事件  
-        public static readonly RoutedEvent MouseDoubleClickEvent = EventManager.RegisterRoutedEvent("MouseDoubleClick", RoutingStrategy.Direct, typeof(MouseButtonEventHandler), typeof(CustomerBorder));
+        public static readonly RoutedEvent MouseLeftDoubleClickEvent = EventManager.RegisterRoutedEvent("MouseLeftDoubleClick", RoutingStrategy.Direct, typeof(MouseButtonEventHandler), typeof(CustomerBorder));
 
-        public event MouseButtonEventHandler MouseDoubleClick
+        public event MouseButtonEventHandler MouseLeftDoubleClick
         {
             add
             {
-                base.AddHandler(MouseDoubleClickEvent, value);
+                base.AddHandler(MouseLeftDoubleClickEvent, value);
             }
             remove
             {
-                base.RemoveHandler(MouseDoubleClickEvent, value);
+                base.RemoveHandler(MouseLeftDoubleClickEvent, value);
             }
         }
 
         //定义路由事件  
-        public static readonly RoutedEvent MouseSingleClickEvent = EventManager.RegisterRoutedEvent("MouseSingleClick", RoutingStrategy.Direct, typeof(MouseButtonEventHandler), typeof(CustomerBorder));
+        public static readonly RoutedEvent MouseLeftSingleClickEvent = EventManager.RegisterRoutedEvent("MouseLeftSingleClick", RoutingStrategy.Direct, typeof(MouseButtonEventHandler), typeof(CustomerBorder));
 
-        public event MouseButtonEventHandler MouseSingleClick
+        public event MouseButtonEventHandler MouseLeftSingleClick
         {
             add
             {
-                base.AddHandler(MouseSingleClickEvent, value);
+                base.AddHandler(MouseLeftSingleClickEvent, value);
             }
             remove
             {
-                base.RemoveHandler(MouseSingleClickEvent, value);
+                base.RemoveHandler(MouseLeftSingleClickEvent, value);
             }
         }
 
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        //定义路由事件  
+        public static readonly RoutedEvent MouseRightSingleClickEvent = EventManager.RegisterRoutedEvent("MouseRightSingleClick", RoutingStrategy.Direct, typeof(MouseButtonEventHandler), typeof(CustomerBorder));
+
+        public event MouseButtonEventHandler MouseRightSingleClick
+        {
+            add
+            {
+                base.AddHandler(MouseRightSingleClickEvent, value);
+            }
+            remove
+            {
+                base.RemoveHandler(MouseRightSingleClickEvent, value);
+            }
+        }
+
+        protected override void  OnMouseLeftButtonDown(MouseButtonEventArgs e)
         {
             base.OnMouseLeftButtonDown(e);
 
@@ -66,7 +81,7 @@ namespace Infrastructure.Controls
                     var timer2 = (System.Timers.Timer)this.Tag;
                     timer2.Stop();
                     timer2.Dispose();
-                    args.RoutedEvent = MouseSingleClickEvent;
+                    args.RoutedEvent = MouseLeftSingleClickEvent;
                     args.Source = e.OriginalSource;
                     this.RaiseEvent(args); // 发出单击消息
                 })));
@@ -76,7 +91,7 @@ namespace Infrastructure.Controls
             }
             if (e.ClickCount > 1)
             {
-                args.RoutedEvent = MouseDoubleClickEvent;
+                args.RoutedEvent = MouseLeftDoubleClickEvent;
                 args.Source = e.OriginalSource;
                 var timer = this.Tag as System.Timers.Timer;
                 if (timer != null)

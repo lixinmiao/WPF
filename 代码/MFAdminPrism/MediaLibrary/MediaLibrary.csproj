@@ -120,7 +120,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Util.Controls\Util.Controls\Util.Controls\Util.Controls.csproj">
+    <ProjectReference Include="..\..\..\控件\Util.Controls\Util.Controls\Util.Controls\Util.Controls.csproj">
       <Project>{343f577e-6388-442c-b725-2ea6893ab221}</Project>
       <Name>Util.Controls</Name>
     </ProjectReference>

@@ -5,6 +5,7 @@
  * ==============================================================================*/
 using Infrastructure.Business;
 using Infrastructure.Business.EnumType;
+using Infrastructure.Business.MainMenu;
 using Infrastructure.Controls;
 using Infrastructure.Events;
 using MediaLibrary.View;
@@ -83,8 +84,10 @@ namespace MediaLibrary.ViewModel
         {
             this.eventAggregator = eventAggregator;
             this.eventAggregator.GetEvent<SaveMediaDetailEvent>().Subscribe(this.saveFileItem);
+           
             InitFileItems();
         }
+       
         private  void InitFileItems()
         {
      
@@ -99,7 +102,7 @@ namespace MediaLibrary.ViewModel
             folder_fileItemList.Add(folderItem.Index, new List<FileItem>());
 
             List<FileItem> rootChidrenFiles = new List<FileItem>();
-            for (int i = 1; i <= 5; i++)
+            for (int i = 1; i <= 10; i++)
             {
                 folderItem = new FileItem();
                 folderItem.Index = fileList.Count + 1;
@@ -280,34 +283,28 @@ namespace MediaLibrary.ViewModel
             var files = from file in this.fileItemList.ToArray() where file.Index == fileIndex select file;
             FileItem fileItem = files.First();
             fileItem.IsFileSelected = !fileItem.IsFileSelected;
+            FileItemSelected = fileItem;
         }
 
 
 
-        private DelegateCommand viewModeChangedCommand;
+        private DelegateCommand<String> viewModeChangedCommand;
         public ICommand ViewModeChangedCommand
         {
             get
             {
                 if (viewModeChangedCommand == null)
                 {
-                    viewModeChangedCommand = new DelegateCommand(viewModeChangedCommandExcute);
+                    viewModeChangedCommand = new DelegateCommand<String>(viewModeChangedCommandExcute);
                 }
                 return viewModeChangedCommand;
             }
 
         }
 
-        private void viewModeChangedCommandExcute()
+        private void viewModeChangedCommandExcute(String isThumb)
         {
-            if(this.isThumb)
-            {
-
-            }
-            else
-            {
-
-            }
+            this.IsThumb =Boolean.Parse(isThumb);
         }
 
         
@@ -370,6 +367,115 @@ namespace MediaLibrary.ViewModel
             var files = from file in this.fileItemList.ToArray() where file.Index == fileItem.Index select file;
             FileItem fileSaved = files.First();
             fileSaved = fileItem;
+        }
+
+      
+
+        private DelegateCommand refreshCommand;
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                if (refreshCommand == null)
+                {
+                    refreshCommand = new DelegateCommand(refreshCommandExcute);
+                }
+                return refreshCommand;
+            }
+
+        }
+        private void refreshCommandExcute()
+        {
+            MessageBox.Show("Refresh");
+        }
+
+        private Boolean isItemSelected=true;
+        public Boolean IsItemSelected
+        {
+            get
+            {
+                return isItemSelected;
+            }
+
+            set
+            {
+                isItemSelected = value; RaisePropertyChanged(() => this.IsItemSelected);
+            }
+        }
+        private DelegateCommand whiteSpaceRightButtonDownCommand;
+        public ICommand WhiteSpaceRightButtonDownCommand
+        {
+            get
+            {
+                if (whiteSpaceRightButtonDownCommand == null)
+                {
+                    whiteSpaceRightButtonDownCommand = new DelegateCommand(whiteSpaceRightButtonDownCommandExcute);
+                }
+                return whiteSpaceRightButtonDownCommand;
+            }
+
+        }
+        private void whiteSpaceRightButtonDownCommandExcute()
+        {
+            IsItemSelected = false;
+            //MessageBox.Show("white");
+        }
+
+        private DelegateCommand itemRightButtonDownCommand;
+        public ICommand ItemRightButtonDownCommand
+        {
+            get
+            {
+                if (itemRightButtonDownCommand == null)
+                {
+                    itemRightButtonDownCommand = new DelegateCommand(itemRightButtonDownCommandExcute);
+                }
+                return itemRightButtonDownCommand;
+            }
+
+        }
+        private void itemRightButtonDownCommandExcute()
+        {
+            IsItemSelected = true;
+            //MessageBox.Show("white");
+        }
+
+        private DelegateCommand<int?> mouseRightDownCommand;
+        public ICommand MouseRightDownCommand
+        {
+            get
+            {
+                if (mouseRightDownCommand == null)
+                {
+                    mouseRightDownCommand = new DelegateCommand<int?>(mouseRightDownCommandExcute);
+                }
+                return mouseRightDownCommand;
+            }
+
+        }
+        private void mouseRightDownCommandExcute(int? index)
+        {
+            
+            int fileIndex = index.Value;
+            var files = from file in this.fileItemList.ToArray() where file.Index == fileIndex select file;
+            FileItem fileItem = files.First();
+            fileItem.IsFileSelected = !fileItem.IsFileSelected;
+            IsItemSelected = true;
+            FileItemSelected = fileItem;
+        }
+
+        private FileItem fileItemSelected;
+        public FileItem FileItemSelected
+        {
+            get
+            {
+                return fileItemSelected;
+            }
+
+            set
+            {
+                fileItemSelected = value; RaisePropertyChanged(() => this.FileItemSelected);
+            }
         }
     }
 }

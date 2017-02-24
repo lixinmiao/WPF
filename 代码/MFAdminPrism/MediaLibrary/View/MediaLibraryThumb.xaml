@@ -10,76 +10,112 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-       
-        <DataTemplate x:Key="thumbitemtemplate" >
-            <customer:CustomerBorder Width="150" Height="150" Cursor="Hand" x:Name="border">
-                <Border.Style>
-                    <Style  TargetType="Border">
-                        <Setter Property="BorderBrush" Value="CornflowerBlue"/>
-                        <Setter Property="Background" Value="White"/>
-                        <Setter Property="BorderThickness" Value="1"/>
-                        <Setter Property="CornerRadius" Value="2"/>
-                        <Setter Property="Padding" Value="2"/>
-                        <Setter Property="Margin" Value="4"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Cursor" Value="Hand"/>
-                                <Setter Property="Background" Value="DarkGray"/>
-                            </Trigger>
-                            <DataTrigger Binding="{Binding IsFileSelected}" Value="True">
-                                <Setter Property="Background" Value="Orange"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <Grid Margin="4">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="15*"></RowDefinition>
-                        <RowDefinition Height="42*"></RowDefinition>
-                        <RowDefinition Height="20*"></RowDefinition>
-                        <RowDefinition Height="18*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <CheckBox Grid.Row="0" IsChecked="{Binding IsFileSelected}" x:Name="checkbox"></CheckBox>
-                    <Image Grid.Row="1"  Margin="3" Source="{Binding Image}"></Image>
-                    <TextBlock Grid.Row="2" Text="{Binding FileName}" HorizontalAlignment="Center" >
-                        <TextBlock.Style>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Foreground" Value="Black"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding IsFileSelected}" Value="True">
-                                        <Setter Property="Foreground" Value="White"></Setter>
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
-                                    <Setter Property="Foreground" Value="White"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                    <WrapPanel Grid.Row="3"  FlowDirection="RightToLeft" Background="CornflowerBlue" VerticalAlignment="Center">
-                        <xly:FButton FIcon="&#xe6A0;"  Padding="0" Background="Transparent" Width="30" Height="30" Command="{Binding DataContext.ViewDetailCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"></xly:FButton>
-                    </WrapPanel>
-                </Grid>
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="MouseDoubleClick">
-                        <i:InvokeCommandAction Command="{Binding DataContext.ViewDetailCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"/>
-                        <!--datacontent很重要-->
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="MouseSingleClick">
-                        <i:InvokeCommandAction Command="{Binding DataContext.SelectCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"/>
-                        <!--datacontent很重要-->
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </customer:CustomerBorder>
-        </DataTemplate>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Themes/Separator.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Util.Controls;component/Style/Themes/Menu.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource DefaultMenuItem}"></Style>
+            <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource DefaultMenu}"></Style>
+
+            <DataTemplate x:Key="thumbitemtemplate" >
+                <customer:CustomerBorder Width="150" Height="150" Cursor="Hand" x:Name="border" >
+                    <Border.Style>
+                        <Style  TargetType="Border">
+                            <Setter Property="BorderBrush" Value="CornflowerBlue"/>
+                            <Setter Property="Background" Value="White"/>
+                            <Setter Property="BorderThickness" Value="1"/>
+                            <Setter Property="CornerRadius" Value="2"/>
+                            <Setter Property="Padding" Value="2"/>
+                            <Setter Property="Margin" Value="4"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Cursor" Value="Hand"/>
+                                    <Setter Property="Background" Value="DarkGray"/>
+                                </Trigger>
+                                <DataTrigger Binding="{Binding IsFileSelected}" Value="True">
+                                    <Setter Property="Background" Value="Orange"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+                    <Grid Margin="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15*"></RowDefinition>
+                            <RowDefinition Height="42*"></RowDefinition>
+                            <RowDefinition Height="20*"></RowDefinition>
+                            <RowDefinition Height="18*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <CheckBox Grid.Row="0" IsChecked="{Binding IsFileSelected}" x:Name="checkbox"></CheckBox>
+                        <Image Grid.Row="1"  Margin="3" Source="{Binding Image}"></Image>
+                        <TextBlock Grid.Row="2" Text="{Binding FileName}" HorizontalAlignment="Center" >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Setter Property="Foreground" Value="Black"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFileSelected}" Value="True">
+                                            <Setter Property="Foreground" Value="White"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                                            <Setter Property="Foreground" Value="White"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <WrapPanel Grid.Row="3"  FlowDirection="RightToLeft" Background="CornflowerBlue" VerticalAlignment="Center">
+                            <xly:FButton FIcon="&#xe722;"  Padding="0" Background="Transparent" Width="30" Height="30" Command="{Binding DataContext.ViewDetailCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"></xly:FButton>
+                        </WrapPanel>
+                    </Grid>
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding DataContext.ViewDetailCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"/>
+                            <!--datacontent很重要-->
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="MouseLeftSingleClick">
+                            <i:InvokeCommandAction Command="{Binding DataContext.SelectCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"/>
+                            <!--datacontent很重要-->
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                            <i:InvokeCommandAction Command="{Binding DataContext.MouseRightDownCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" CommandParameter="{Binding Index}"/>
+                            <!--datacontent很重要-->
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </customer:CustomerBorder>
+              
+            </DataTemplate>
+
+            <customer:BindingProxy x:Key="BindingProxy" Data="{Binding}"/>
+
+
+        </ResourceDictionary>
+
     </UserControl.Resources>
 
-    <ItemsControl  x:Name="itemsControl"  ItemsSource="{Binding FileItemList}" BorderBrush="Gray" BorderThickness="0 1" ItemTemplate="{StaticResource thumbitemtemplate}">
-        <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                <WrapPanel Orientation="Horizontal"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
 
-    </ItemsControl>
+    <DockPanel>
+        <!--<Button DockPanel.Dock="Top" Background="Aqua">1(Top)</Button>
+        <Button DockPanel.Dock="Left" Background="Green">2(Left)</Button>
+        <Button DockPanel.Dock="Right" Background="Yellow">3(Right)</Button>-->
+        <StackPanel  Background="White"  DockPanel.Dock="Bottom" Height="20">
+            <TextBlock Text="{Binding IsItemSelected}" Foreground="Black"/>
+        </StackPanel>
+        <ItemsControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="itemsControl"  Background="Red"  ItemsSource="{Binding FileItemList}" BorderBrush="Gray" BorderThickness="0" ItemTemplate="{StaticResource thumbitemtemplate}" >
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="PreviewMouseRightButtonDown">
+                    <i:InvokeCommandAction Command="{Binding DataContext.WhiteSpaceRightButtonDownCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=UserControl}}" />
+                    <!--datacontent很重要-->
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+
+        </ItemsControl>
+
+    </DockPanel>
+
 </UserControl>

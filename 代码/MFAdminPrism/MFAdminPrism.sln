@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaLibrary", "MediaLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{B23A3429-5D50-4BD7-BCF0-DA58E81A998B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util.Controls", "..\..\Util.Controls\Util.Controls\Util.Controls\Util.Controls.csproj", "{343F577E-6388-442C-B725-2EA6893AB221}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util.Controls", "..\..\控件\Util.Controls\Util.Controls\Util.Controls\Util.Controls.csproj", "{343F577E-6388-442C-B725-2EA6893AB221}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

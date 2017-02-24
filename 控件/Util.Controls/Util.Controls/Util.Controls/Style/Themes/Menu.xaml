@@ -86,7 +86,8 @@
                             <Setter TargetName="PART_Icon" Value="{StaticResource CheckedForeground}" Property="Foreground"></Setter>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="border" Value="{StaticResource DisableOpacity}" Property="Opacity"></Setter>
+                            <!--<Setter TargetName="border" Value="{StaticResource DisableOpacity}" Property="Opacity"></Setter>-->
+                            <Setter  Property="Background" Value="Gray" TargetName="border"/>
                         </Trigger>
                         <!--高亮状态-->
                         <Trigger Property="IsHighlighted" Value="true">

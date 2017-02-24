@@ -4,7 +4,7 @@
 library
 C#
 .cs
-G:\Project\MFAdminPrism\MediaLibrary\obj\Debug\
+G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\
 MediaLibrary
 none
 false
@@ -13,7 +13,7 @@ DEBUG;TRACE
 7721269992
 2-1592862028
 9-178350295
-211265346240
+21-969588462
 Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\MediaDetailView.xaml;View\MediaLibraryList.xaml;View\MediaLibraryMain.xaml;View\MediaLibraryThumb.xaml;View\ToolMenuBar.xaml;
 
 False

@@ -19,6 +19,7 @@ using System.Windows.Input;
 namespace MediaLibrary.ViewModel
 {
     [Export]
+    [PartCreationPolicy(CreationPolicy.NonShared)]
     /// <summary>
     /// MediaDetailViewModel
     /// </summary>
@@ -119,6 +120,40 @@ namespace MediaLibrary.ViewModel
             IsEditMode = false;
             this.FileItem.FileName = filename;
             eventAggregator.GetEvent<SaveMediaDetailEvent>().Publish(this.FileItem);
+        }
+
+        private DelegateCommand unloadedCommand;
+        public ICommand UnloadedCommand
+        {
+            get
+            {
+                if (unloadedCommand == null)
+                {
+                    unloadedCommand = new DelegateCommand(unloadedCommandExcute);
+                }
+                return unloadedCommand;
+            }
+        }
+        private void unloadedCommandExcute()
+        {
+            IsEditMode = false;
+        }
+
+        private DelegateCommand loadedCommand;
+        public ICommand LoadedCommand
+        {
+            get
+            {
+                if (loadedCommand == null)
+                {
+                    loadedCommand = new DelegateCommand(loadedCommandExcute);
+                }
+                return loadedCommand;
+            }
+        }
+        private void loadedCommandExcute()
+        {
+            IsEditMode = false;
         }
     }
 }

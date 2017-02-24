@@ -28,17 +28,26 @@
                 <RowDefinition Height="20*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="0" Visibility="{Binding IsEditMode,Converter={StaticResource boolReverseToVisibilityConverter}}" >
-                <xly:FButton FIcon="&#xe628;" Margin="0,0,0,0" CornerRadius="0" Width="40" Height="25" Cursor="Hand"></xly:FButton>
-                <xly:FButton FIcon="&#xe63e;" CornerRadius="0" AllowsAnimation="True" Width="40" Height="25" Command="{Binding DataContext.EditCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand">
+                <xly:FButton FIcon="&#xe722;" Margin="0,0,0,0" CornerRadius="0" Width="40" Height="25" Cursor="Hand"></xly:FButton>
+                <xly:FButton FIcon="&#xe61a;" CornerRadius="0" AllowsAnimation="True" Width="40" Height="25" Command="{Binding DataContext.EditCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand">
                 </xly:FButton>
             </StackPanel>
             <StackPanel Grid.Row="0" Visibility="{Binding IsEditMode,Converter={StaticResource boolToVisibilityConverter}}">
-                <xly:FButton FIcon="&#xe62a;" Margin="5,0,0,0" CornerRadius="0" Width="40" Height="25" Foreground="Green" Command="{Binding DataContext.SaveCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Text,ElementName=eidttext}" Cursor="Hand"></xly:FButton>
-                <xly:FButton FIcon="&#xe60a;" CornerRadius="0" AllowsAnimation="True" Width="40" Height="25" Foreground="Red" Command="{Binding DataContext.CancelCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand"></xly:FButton>
+                <xly:FButton FIcon="&#xe61a;" Margin="5,0,0,0" CornerRadius="0" Width="40" Height="25" Foreground="Green" Command="{Binding DataContext.SaveCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding Text,ElementName=eidttext}" Cursor="Hand"></xly:FButton>
+                <xly:FButton FIcon="&#xe601;" CornerRadius="0" AllowsAnimation="True" Width="40" Height="25" Foreground="Red" Command="{Binding DataContext.CancelCommand,RelativeSource={RelativeSource AncestorType=UserControl}}" Cursor="Hand"></xly:FButton>
             </StackPanel>
             <Image Source="{Binding FileItem.Image}" Grid.Row="1" Stretch="None"></Image>
             <TextBlock Text="{Binding FileItem.FileName,Mode=OneWay}" Grid.Row="2" TextAlignment="Center" Foreground="Black" Visibility="{Binding IsEditMode,Converter={StaticResource boolReverseToVisibilityConverter}}" VerticalAlignment="Center"/>
             <TextBox Text="{Binding FileItem.FileName,Mode=OneWay}"  Grid.Row="2" HorizontalContentAlignment="Center" Foreground="Black" x:Name="eidttext" Visibility="{Binding IsEditMode,Converter={StaticResource boolToVisibilityConverter}}" VerticalAlignment="Center"></TextBox>
         </Grid>
     </Border>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnloadedCommand}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+ 
 </UserControl>

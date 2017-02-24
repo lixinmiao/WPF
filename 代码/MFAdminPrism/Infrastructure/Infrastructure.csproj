@@ -56,9 +56,11 @@
     <Compile Include="Business\EnumType\ShowModeType.cs" />
     <Compile Include="Business\FileItem.cs" />
     <Compile Include="Business\MainMenu\MenuItem.cs" />
+    <Compile Include="Controls\BindingProxy .cs" />
     <Compile Include="Common\EnumRemarkExtend.cs" />
     <Compile Include="Common\EnumRemarkAttribute.cs" />
     <Compile Include="Controls\CustomerBorder.cs" />
+    <Compile Include="Controls\CustomerListView.cs" />
     <Compile Include="Controls\PopWindow\IPopUpWindowViewModel.cs" />
     <Compile Include="Controls\PopWindow\PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
@@ -66,6 +68,7 @@
     <Compile Include="Controls\PopWindow\PopUpWindowViewModel.cs" />
     <Compile Include="Converters\BoolReverseConverter.cs" />
     <Compile Include="Converters\BoolReverseToVisibilityConverter .cs" />
+    <Compile Include="Converters\BoolReverseToEnabledConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter .cs" />
     <Compile Include="Events\SaveMediaDetailEvent.cs" />
     <Compile Include="Events\ViewMediaDetailEvent.cs" />
@@ -128,6 +131,8 @@
     <Resource Include="Resources\Images\player.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Images\delete.png" />
+    <Resource Include="Resources\Images\upload.png" />
     <Resource Include="Resources\Images\video.png" />
     <Resource Include="Resources\Images\openfolderHS.png" />
     <Resource Include="Resources\Images\arrow_right.png" />
@@ -135,6 +140,8 @@
     <Resource Include="Resources\Images\html.png" />
     <Resource Include="Resources\Images\rss.png" />
     <Resource Include="Resources\Images\close.png" />
+    <Resource Include="Resources\Images\folder_add.png" />
+    <Resource Include="Resources\Images\download.png" />
     <Content Include="Resources\Images\thumb.png" />
     <Resource Include="Resources\Images\Web.png" />
   </ItemGroup>
