@@ -147,6 +147,10 @@
       <Project>{343f577e-6388-442c-b725-2ea6893ab221}</Project>
       <Name>Util.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\DragControlHelper-master\UICommon\UICommon.csproj">
+      <Project>{fc3fac70-a4bb-45ef-b7ca-4a74368e5d81}</Project>
+      <Name>UICommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{b23a3429-5d50-4bd7-bcf0-da58e81a998b}</Project>
       <Name>Infrastructure</Name>
@@ -158,6 +162,10 @@
     <ProjectReference Include="..\PlayerModule\Player.csproj">
       <Project>{bdaf2502-0e1b-4efa-ada2-5b6c0d4463d0}</Project>
       <Name>Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Template\Template.csproj">
+      <Project>{9ae17e0c-4268-4c8d-ba46-0c121b0217b1}</Project>
+      <Name>Template</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -78,3 +78,7 @@ G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\obj\Debug\Shell.baml
 G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\obj\Debug\MFAdminPrism.g.resources
 G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\obj\Debug\MFAdminPrism.Properties.Resources.resources
 G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\obj\Debug\MFAdminPrism.csproj.GenerateResource.Cache
+G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\bin\Debug\Template.dll
+G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\bin\Debug\Template.pdb
+G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\bin\Debug\UICommon.dll
+G:\MyGit\WPF\代码\MFAdminPrism\MFAdminPrism\bin\Debug\UICommon.pdb

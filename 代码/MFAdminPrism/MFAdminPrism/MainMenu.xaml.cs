@@ -30,8 +30,8 @@ namespace MFAdminPrism
             SolidColorBrush mySolidColorBrush1 = new SolidColorBrush();
             mySolidColorBrush1.Color = Colors.Red;
             StackPanel stackpanel = sender as StackPanel;
-           TextBlock textblock= stackpanel.FindName("itemname") as TextBlock;
-            textblock.Foreground = mySolidColorBrush1;
+            TextBlock textblock= stackpanel.FindName("itemname") as TextBlock;
+            //textblock.Foreground = mySolidColorBrush1;
         }
 
         private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
@@ -40,7 +40,7 @@ namespace MFAdminPrism
             mySolidColorBrush1.Color = Colors.Black;
             StackPanel stackpanel = sender as StackPanel;
             TextBlock textblock = stackpanel.FindName("itemname") as TextBlock;
-            textblock.Foreground = mySolidColorBrush1;
+            //textblock.Foreground = mySolidColorBrush1;
         }
     }
 }

@@ -17,6 +17,21 @@ namespace Infrastructure.Business.MainMenu
     /// </summary>
     public class MenuItem: NotificationObject
     {
+
+        private String isChecked = "False";
+        public String IsChecked
+        {
+            get
+            {
+                return isChecked;
+            }
+
+            set
+            {
+                isChecked = value; RaisePropertyChanged(() => this.IsChecked);
+            }
+        }
+
         private String itemName;
 
         public string ItemName
@@ -75,5 +90,21 @@ namespace Infrastructure.Business.MainMenu
             }
         }
 
+        public int Index
+        {
+            get
+            {
+                return index;
+            }
+
+            set
+            {
+                index = value; RaisePropertyChanged(() => this.Index);
+            }
+        }
+
+        private int index;
+
+      
     }
 }

@@ -50,7 +50,7 @@
                     </MenuItem>
                     <MenuItem Header="下载" Background="#404040" Icon="&#xe614;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
                     </MenuItem>
-                    <MenuItem Header="移动到" Background="#404040" Icon="&#xe685;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
+                    <MenuItem Header="移动到" Background="#404040" Icon="&#xe685;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}" Command="{Binding MoveCommand}" CommandParameter="{Binding FileItemSelected.Index}">
                     </MenuItem>
                     <MenuItem Header="删除" Background="#404040" Icon="&#xe64d;" Visibility="{Binding IsItemSelected,Converter={StaticResource BoolToVisibilityConverter}}">
                     </MenuItem>

@@ -477,5 +477,30 @@ namespace MediaLibrary.ViewModel
                 fileItemSelected = value; RaisePropertyChanged(() => this.FileItemSelected);
             }
         }
+
+        private DelegateCommand<int?> moveCommand;
+        public ICommand MoveCommand
+        {
+            get
+            {
+                if (moveCommand == null)
+                {
+                    moveCommand = new DelegateCommand<int?>(moveCommandExcute);
+                }
+                return moveCommand;
+            }
+        }
+
+        private void moveCommandExcute(int? index)
+        {
+
+            PopUpWindow popUpWindow = new PopUpWindow();
+            popUpWindow.Width = 350;
+            popUpWindow.Height = 300;
+            FolderTreeView folderTreeView = ServiceLocator.Current.GetInstance<FolderTreeView>();
+            popUpWindow.SetUserControlShow(folderTreeView);
+            this.eventAggregator.GetEvent<GetFolderListEvent>().Publish(folder_fileItemList);
+            popUpWindow.Show();
+        }
     }
 }

@@ -66,8 +66,12 @@
   <ItemGroup>
     <Compile Include="MediaLibraryModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\FolderTreeViewModel.cs" />
     <Compile Include="ViewModel\MediaDetailViewModel.cs" />
     <Compile Include="ViewModel\MediaLibraryViewModel.cs" />
+    <Compile Include="View\FolderTreeView.xaml.cs">
+      <DependentUpon>FolderTreeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MediaDetailView.xaml.cs">
       <DependentUpon>MediaDetailView.xaml</DependentUpon>
     </Compile>
@@ -97,6 +101,10 @@
     <Page Include="Resources\IconsNonShared.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FolderTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MediaDetailView.xaml">
       <SubType>Designer</SubType>

@@ -56,6 +56,7 @@
     <Compile Include="Business\EnumType\ShowModeType.cs" />
     <Compile Include="Business\FileItem.cs" />
     <Compile Include="Business\MainMenu\MenuItem.cs" />
+    <Compile Include="Business\PropertyNodeItem.cs" />
     <Compile Include="Controls\BindingProxy .cs" />
     <Compile Include="Common\EnumRemarkExtend.cs" />
     <Compile Include="Common\EnumRemarkAttribute.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Converters\BoolReverseToVisibilityConverter .cs" />
     <Compile Include="Converters\BoolReverseToEnabledConverter.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter .cs" />
+    <Compile Include="Events\GetFolderListEvent.cs" />
     <Compile Include="Events\SaveMediaDetailEvent.cs" />
     <Compile Include="Events\ViewMediaDetailEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,6 +144,7 @@
     <Resource Include="Resources\Images\close.png" />
     <Resource Include="Resources\Images\folder_add.png" />
     <Resource Include="Resources\Images\download.png" />
+    <Resource Include="Resources\Images\template.png" />
     <Content Include="Resources\Images\thumb.png" />
     <Resource Include="Resources\Images\Web.png" />
   </ItemGroup>

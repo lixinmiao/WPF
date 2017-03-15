@@ -101,7 +101,7 @@
         <StackPanel  Background="White"  DockPanel.Dock="Bottom" Height="20">
             <TextBlock Text="{Binding IsItemSelected}" Foreground="Black"/>
         </StackPanel>
-        <ItemsControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="itemsControl"  Background="Red"  ItemsSource="{Binding FileItemList}" BorderBrush="Gray" BorderThickness="0" ItemTemplate="{StaticResource thumbitemtemplate}" >
+        <ItemsControl VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="itemsControl"    ItemsSource="{Binding FileItemList}" BorderBrush="Gray" BorderThickness="0" ItemTemplate="{StaticResource thumbitemtemplate}" >
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"  VerticalAlignment="Top" HorizontalAlignment="Left"/>

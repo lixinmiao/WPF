@@ -20,7 +20,9 @@ namespace Infrastructure.Business.EnumType
         [EnumRemark("Player")]
         Player,
         [EnumRemark("Media Library")]
-        MediaLibrary
+        MediaLibrary,
+        [EnumRemark("Template")]
+        Template
     }
     
    

@@ -58,3 +58,5 @@ G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\View\ToolMenuBar.baml
 G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\MediaLibrary.g.resources
 G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\MediaLibrary.dll
 G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\MediaLibrary.pdb
+G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\View\FolderTreeView.g.cs
+G:\MyGit\WPF\代码\MFAdminPrism\MediaLibrary\obj\Debug\View\FolderTreeView.baml

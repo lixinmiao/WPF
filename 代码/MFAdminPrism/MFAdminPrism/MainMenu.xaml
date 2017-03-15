@@ -34,24 +34,72 @@
                                 </BeginStoryboard>
                             </Trigger.ExitActions>
                         </Trigger>
+                        <!--<DataTrigger Binding="{Binding IsChecked}"  Value="True">
+                            <Setter  Property="Background"   Value="DarkGray"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsChecked}"  Value="False">
+                            <Setter  Property="Background"   Value="Transparent" />
+                        </DataTrigger>-->
+
                     </Style.Triggers>
                 </Style>
+                <!--<Style TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=Tag,ElementName=itemname}"  Value="True">
+                            <Setter  Property="Foreground"   Value="Red" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>-->
+               
             </DataTemplate.Resources>
 
             <StackPanel Orientation="Vertical" Width="100"  VerticalAlignment="Center" HorizontalAlignment="Center" Height="80" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave">
-                <Border BorderThickness="1" CornerRadius="7"  Margin="2,0" >
+
+                <Border BorderThickness="1" CornerRadius="7"  Margin="2,0" Tag="{Binding IsChecked}" x:Name="border">
                     <Image Source="{Binding ItemImageSrc}" Width="50"/>
+
                 </Border>
-                <TextBlock Text="{Binding ItemName}" Margin="4,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" x:Name="itemname"/>
-                <TextBlock Text="{Binding MenuItemType}" Margin="4,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" x:Name="itemtype" Visibility="Hidden"/>
+                <!--<Label Content="{Binding IsChecked}"></Label>-->
+                <!--<TextBlock Text="{Binding IsChecked}" Margin="4,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" x:Name="itemtype" Visibility="Collapsed"/>-->
+                <TextBlock Text="{Binding ItemName}" Tag="{Binding IsChecked}" Margin="4,0" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Segoe UI" x:Name="itemname">
+                    <!--<TextBlock.Resources>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=Tag,RelativeSource={RelativeSource Self}}"  Value="True">
+                                    <Setter  Property="Foreground"   Value="Red" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=Tag,RelativeSource={RelativeSource Self}}"  Value="False">
+                                    <Setter  Property="Foreground"   Value="Yellow" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Resources>-->
+                </TextBlock>
+
                 <!--<Button Command="{Binding DataContext.MouseLeftDownCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}"></Button>-->
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseLeftButtonDown">
-                        <i:InvokeCommandAction Command="{Binding DataContext.MouseLeftDownCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" CommandParameter="{Binding ItemName}"/><!--datacontent很重要-->
+                        <i:InvokeCommandAction Command="{Binding DataContext.MouseLeftDownCommand,RelativeSource={RelativeSource FindAncestor,AncestorType=Window}}" CommandParameter="{Binding Index}"/>
+                        <!--datacontent很重要-->
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
-              
+
             </StackPanel>
+            
+            
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsChecked}" Value="True">
+                    <Setter  Property="Background"   Value="DarkGray" TargetName="border"/>
+                    <Setter  Property="BorderBrush"   Value="Red"  TargetName="border"/>
+                    <Setter  Property="Foreground"   Value="Red"  TargetName="itemname"/>
+                    <!--<Setter  Property="Margin" Value="4,0" TargetName="border"/>
+                    <Setter  Property="BorderThickness" Value="1.5" TargetName="border"/>-->
+                </DataTrigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter  Property="Foreground"   Value="Yellow"  TargetName="itemname"/>
+                </Trigger>
+            </DataTemplate.Triggers>
+               
         </DataTemplate>
     </UserControl.Resources>
     <ItemsControl  x:Name="itemsControl"  ItemsSource="{Binding MenuItemList}" BorderBrush="Gray" BorderThickness="0 1" ItemTemplate="{StaticResource menuitemtemplate}">

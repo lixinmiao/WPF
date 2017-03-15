@@ -36,13 +36,14 @@ namespace MFAdminPrism
         public ShellViewModel(IRegionManager _regionManager)
         {
             regionManager = _regionManager;
+            InitMenuItems();
         }
         private ObservableCollection<MenuItem> menuItemList = new ObservableCollection<MenuItem>();
         public ObservableCollection<MenuItem> MenuItemList
         {
             get
             {
-                InitMenuItems();
+                
                 return menuItemList;
             }
             set
@@ -55,39 +56,63 @@ namespace MFAdminPrism
 
         private void InitMenuItems()
         {
+           
 
             MenuItem playerMenuItem = new MenuItem();
+            playerMenuItem.Index = 0;
             playerMenuItem.MenuItemType = MenuItemType.Player;
             playerMenuItem.ItemName = MenuItemType.Player.GetRemark();
             playerMenuItem.ItemImageSrc = "pack://application:,,,/Infrastructure;component/Resources/Images/player.png";
             menuItemList.Add(playerMenuItem);
 
             MenuItem medialibraryMenuItem = new MenuItem();
+            medialibraryMenuItem.Index = 1;
             medialibraryMenuItem.MenuItemType = MenuItemType.MediaLibrary;
             medialibraryMenuItem.ItemName =MenuItemType.MediaLibrary.GetRemark();
             medialibraryMenuItem.ItemImageSrc = "pack://application:,,,/Infrastructure;component/Resources/Images/medias.png";
             menuItemList.Add(medialibraryMenuItem);
 
+            MenuItem templateMenuItem = new MenuItem();
+            templateMenuItem.Index = 2;
+            templateMenuItem.MenuItemType = MenuItemType.Template;
+            templateMenuItem.ItemName = MenuItemType.Template.GetRemark();
+            templateMenuItem.ItemImageSrc = "pack://application:,,,/Infrastructure;component/Resources/Images/template.png";
+            menuItemList.Add(templateMenuItem);
+
         }
 
-        private DelegateCommand<String> mouseLeftDownCommand;
+        private DelegateCommand<int?> mouseLeftDownCommand;
         public ICommand MouseLeftDownCommand
         {
             get
             {
                 if (mouseLeftDownCommand == null)
                 {
-                    mouseLeftDownCommand = new DelegateCommand<String>(mouseLeftDownCommandExcute);
+                    mouseLeftDownCommand = new DelegateCommand<int?>(mouseLeftDownCommandExcute);
                 }
                 return mouseLeftDownCommand;
             }
             
         }
-        private void mouseLeftDownCommandExcute(String menuItemTypeValue)
+        private void mouseLeftDownCommandExcute(int?  index)
         {
-            String menuitemname=EnumRemarkExtend.ByRemark<MenuItemType>(menuItemTypeValue);
-            MenuItemType menuItemType = (MenuItemType)Enum.Parse(typeof(MenuItemType), menuitemname);
-            switch (menuItemType)
+            //String menuitemname=EnumRemarkExtend.ByRemark<MenuItemType>(menuItemTypeValue);
+            //MenuItemType menuItemType = (MenuItemType)Enum.Parse(typeof(MenuItemType), menuitemname);
+
+            MenuItem menuItem = null;
+            foreach (MenuItem item in menuItemList)
+            {
+                if (item.Index == index.Value)
+                {
+                    item.IsChecked = "True";
+                     menuItem= item;
+                }
+                else
+                {
+                    item.IsChecked = "False";
+                }
+            }
+            switch (menuItem.MenuItemType)
             {
                 case MenuItemType.Player:
                     {
@@ -104,6 +129,13 @@ namespace MFAdminPrism
                 case MenuItemType.MediaLibrary:
                     {
                         Uri uri = new Uri("MediaLibraryMain", UriKind.Relative);  
+                        regionManager.RequestNavigate(RegionNames.MainRegion, uri);//导航
+                    }
+                    break;
+
+                case MenuItemType.Template:
+                    {
+                        Uri uri = new Uri("TemplateMain", UriKind.Relative);
                         regionManager.RequestNavigate(RegionNames.MainRegion, uri);//导航
                     }
                     break;

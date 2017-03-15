@@ -12,6 +12,7 @@ using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using Template;
 
 namespace MFAdminPrism
 {
@@ -52,6 +53,7 @@ namespace MFAdminPrism
 
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(PlayerModule).Assembly));
             this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(MediaLibraryModule).Assembly));
+            this.AggregateCatalog.Catalogs.Add(new AssemblyCatalog(typeof(TemplateModule).Assembly));
         }
     }
 }

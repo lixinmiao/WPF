@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-7721269992
+8782774994
 2-1592862028
-9-178350295
+11-1583236453
 21-969588462
-Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\MediaDetailView.xaml;View\MediaLibraryList.xaml;View\MediaLibraryMain.xaml;View\MediaLibraryThumb.xaml;View\ToolMenuBar.xaml;
+Resources\Icons.xaml;Resources\IconsNonShared.xaml;View\FolderTreeView.xaml;View\MediaDetailView.xaml;View\MediaLibraryList.xaml;View\MediaLibraryMain.xaml;View\MediaLibraryThumb.xaml;View\ToolMenuBar.xaml;
 
 False
 
